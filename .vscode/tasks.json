@@ -1,0 +1,30 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build things",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Clean up things","Generate CSS", "Go Generate"]
+    },
+    {
+      "label": "Clean up things",
+      "type": "shell",
+      "command": ["rm", "static/css/tailwind.css"],
+      "windows":{                    
+          "command": "rm static/css/tailwind.css && rm static/assets.go"
+      }
+    },
+    {
+      "label": "Go Generate",
+      "type": "shell",
+      "command": "go generate main.go"
+    },
+    {
+      "label": "Generate CSS",
+      "type": "shell",
+      "command": "npm run build:css"
+    }
+  ]
+}

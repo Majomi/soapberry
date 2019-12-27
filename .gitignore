@@ -1,0 +1,4 @@
+node_modules
+static/css/tailwind.css
+static/assets.go
+__debug_bin
