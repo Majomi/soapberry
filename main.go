@@ -15,7 +15,7 @@ import (
 
 func main() {
 	r := chi.NewRouter()
-	r.Use(middleware.Logger, middleware.DefaultCompress)
+	r.Use(middleware.Logger, middleware.DefaultCompress, middleware.StripSlashes)
 
 	srv := &http.Server{
 		Addr:         ":3000",

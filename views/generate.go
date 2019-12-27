@@ -2,21 +2,21 @@
 
 package main
 
-import ( 
-	"net/http"
-	"github.com/shurcooL/vfsgen"
-	"github.com/shurcooL/httpfs/union"
+import (
 	"github.com/shurcooL/httpfs/filter"
+	"github.com/shurcooL/httpfs/union"
+	"github.com/shurcooL/vfsgen"
+	"net/http"
 )
 
-func main() {	
+func main() {
 	fs := union.New(map[string]http.FileSystem{
-		"/static":filter.Skip(http.Dir("static"),filter.FilesWithExtensions(".go")) ,
+		"/static":    filter.Skip(http.Dir("static"), filter.FilesWithExtensions(".go")),
 		"/templates": http.Dir("templates"),
 	})
 	if err := vfsgen.Generate(fs, vfsgen.Options{
-		PackageName: "static",
-		Filename: "static/assets.go",
+		PackageName:  "static",
+		Filename:     "static/assets.go",
 		VariableName: "Assets",
 	}); err != nil {
 		panic(err.Error())
