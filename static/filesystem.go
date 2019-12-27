@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// FileSystem is a custom implementation of http.FileSystem which returns 404 if the requested file is a folder or doesnt exist
 type FileSystem struct {
 	Fs http.FileSystem
 }

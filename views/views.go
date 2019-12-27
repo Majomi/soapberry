@@ -1,11 +1,8 @@
 package views
 
 import "html/template"
-
 import "github.com/shurcooL/httpfs/html/vfstemplate"
-
 import "github.com/shurcooL/httpfs/path/vfspath"
-
 import "github.com/majomi/soapberry/static"
 
 var (
@@ -14,6 +11,7 @@ var (
 	TemplateDir string = "/templates/"
 )
 
+// NewView creates a new view with specified files
 func NewView(layout string, files ...string) *View {
 	addTemplatePath(files)
 	addTemplateExt(files)
@@ -49,6 +47,7 @@ func addTemplateExt(files []string) {
 	}
 }
 
+// View defines a view containing a template and a layout
 type View struct {
 	Template *template.Template
 	Layout   string
